@@ -39,7 +39,7 @@ namespace WWB.BufferSerializer
                 }
                 else
                 {
-                    Serialize(property.Type, value, byteBlock, property.Size, property.TypeHandler);
+                    Serialize(property.Type, value, byteBlock, property.Size, property.LengthPlaceSize, property.TypeHandler);
                 }
             }
         }
@@ -63,84 +63,84 @@ namespace WWB.BufferSerializer
             {
                 foreach (var item in list)
                 {
-                    Serialize(property.ArgType, item, byteBlock, property.ArgSize, property.TypeHandler);
+                    Serialize(property.ArgType, item, byteBlock, property.ArgSize, property.LengthPlaceSize, property.TypeHandler);
                 }
             }
         }
 
-        private static void Serialize(Type type, object obj, ByteBlock byteBlock, int size, Type handlerType)
+        private static void Serialize(Type type, object obj, ByteBlock byteBlock, int size, int lengthPlaceSize, Type handlerType)
         {
             switch (obj)
             {
                 case bool value:
                     {
-                        Converter<bool>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<bool>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case byte value:
                     {
-                        Converter<byte>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<byte>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case short value:
                     {
-                        Converter<short>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<short>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case ushort value:
                     {
-                        Converter<ushort>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<ushort>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case int value:
                     {
-                        Converter<int>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<int>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case uint value:
                     {
-                        Converter<uint>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<uint>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case long value:
                     {
-                        Converter<long>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<long>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case ulong value:
                     {
-                        Converter<ulong>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<ulong>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case float value:
                     {
-                        Converter<float>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<float>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case double value:
                     {
-                        Converter<double>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<double>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case decimal value:
                     {
-                        Converter<decimal>.GetConverter(handlerType).Write(value, byteBlock, size);
+                        Converter<decimal>.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
 
                 case DateTime value:
                     {
-                        DateTimeConverter.GetConverter(handlerType).Write(value, byteBlock, size);
+                        DateTimeConverter.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case string value:
                     {
-                        StringConverter.GetConverter(handlerType).Write(value, byteBlock, size);
+                        StringConverter.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
                 case byte[] value:
                     {
-                        ByteArrayConverter.GetConverter(handlerType).Write(value, byteBlock, size);
+                        ByteArrayConverter.GetConverter(handlerType).Write(value, byteBlock, size, lengthPlaceSize);
                         return;
                     }
 
@@ -183,7 +183,7 @@ namespace WWB.BufferSerializer
                 }
                 else
                 {
-                    var value = Deserialize(byteBlock, property.TypeCode, property.Size, property.TypeHandler);
+                    var value = Deserialize(byteBlock, property.TypeCode, property.Size, property.LengthPlaceSize, property.TypeHandler);
                     property.SetValue(ref instance, value);
                 }
             }
@@ -208,7 +208,7 @@ namespace WWB.BufferSerializer
             {
                 for (var i = 0; i < size; i++)
                 {
-                    var val = Deserialize(byteBlock, property.ArgTypeCode, property.ArgSize, property.TypeHandler);
+                    var val = Deserialize(byteBlock, property.ArgTypeCode, property.ArgSize, property.LengthPlaceSize, property.TypeHandler);
                     property.AddMethod.Invoke(instance, new object[] { val });
                 }
             }
@@ -216,51 +216,51 @@ namespace WWB.BufferSerializer
             return instance;
         }
 
-        private static object Deserialize(ByteBlock byteBlock, FastTypeCode typeCode, int size, Type handlerType)
+        private static object Deserialize(ByteBlock byteBlock, FastTypeCode typeCode, int size, int lengthPlaceSize, Type handlerType)
         {
             switch (typeCode)
             {
                 case FastTypeCode.Boolean:
-                    return Converter<bool>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<bool>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.Byte:
-                    return Converter<byte>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<byte>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.Int16:
-                    return Converter<short>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<short>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.Int32:
-                    return Converter<int>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<int>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.Int64:
-                    return Converter<long>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<long>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.UInt16:
-                    return Converter<ushort>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<ushort>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.UInt32:
-                    return Converter<uint>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<uint>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.UInt64:
-                    return Converter<ulong>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<ulong>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.Double:
-                    return Converter<double>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<double>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.Float:
-                    return Converter<float>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<float>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.Decimal:
-                    return Converter<decimal>.GetConverter(handlerType).Read(byteBlock, size);
+                    return Converter<decimal>.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.DateTime:
-                    return DateTimeConverter.GetConverter(handlerType).Read(byteBlock, size);
+                    return DateTimeConverter.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.String:
-                    return StringConverter.GetConverter(handlerType).Read(byteBlock, size);
+                    return StringConverter.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 case FastTypeCode.ByteArray:
-                    return ByteArrayConverter.GetConverter(handlerType).Read(byteBlock, size);
+                    return ByteArrayConverter.GetConverter(handlerType).Read(byteBlock, size, lengthPlaceSize);
 
                 default:
                     throw new Exception("未定义的枚举类型：" + typeCode.ToString());

@@ -18,8 +18,8 @@ namespace WWB.BufferSerializer.Converters
             return ConverterCache.GetConverter<T>(type);
         }
 
-        public abstract void Write(T value, ByteBlock byteBlock, int size);
+        public abstract void Write(T value, ByteBlock byteBlock, int size, int lengthPlaceSize);
 
-        public abstract T Read(ByteBlock byteBlock, int size);
+        public abstract T Read(ByteBlock byteBlock, int size, int lengthPlaceSize);
     }
 }

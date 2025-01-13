@@ -3,9 +3,9 @@
   <PropertyGroup>
 	  <TargetFramework>net6.0</TargetFramework>
 	  <ImplicitUsings>enable</ImplicitUsings>
-	  <Nullable>disable</Nullable>
+	  <Nullable>enable</Nullable>
 	  <PackageId>WWB.BufferSerializer</PackageId>
-	  <Version>1.0.2</Version>
+	  <Version>1.0.3</Version>
 	  <Authors>Wwb</Authors>
 	  <Description>NET基础框架</Description>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>

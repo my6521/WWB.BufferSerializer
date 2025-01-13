@@ -6,7 +6,7 @@ namespace WWB.BufferSerializer.Converters
     {
         private int maxSize = 4;
 
-        public override int Read(ByteBlock byteBlock, int size)
+        public override int Read(ByteBlock byteBlock, int size, int lengthPlaceSize)
         {
             if (size < maxSize)
             {
@@ -16,7 +16,7 @@ namespace WWB.BufferSerializer.Converters
             return byteBlock.ReadInt32();
         }
 
-        public override void Write(int value, ByteBlock byteBlock, int size)
+        public override void Write(int value, ByteBlock byteBlock, int size, int lengthPlaceSize)
         {
             if (size < maxSize)
             {

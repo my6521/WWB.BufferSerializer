@@ -85,7 +85,7 @@ class TestClass1
     [FastProperty(16)]
     public List<int> List3 { get; set; }
 
-    [FastProperty(16, ArgSize = 2)]
+    [FastProperty(17, ArgSize = 2)]
     public List<string> List4 { get; set; }
 }
 

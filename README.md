@@ -1,5 +1,7 @@
 # wwb-bufferserializer
 
+一个非常简单的二进制序列化和反序列化工具
+
 ### demo
 ```
 var obj = new TestClass1

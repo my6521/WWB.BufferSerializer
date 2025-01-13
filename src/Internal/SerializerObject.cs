@@ -25,7 +25,7 @@ namespace WWB.BufferSerializer.Relection
             return type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.Default)
                           .Where(p =>
                           {
-                              if (p.IsDefined(typeof(FastPropertyAttribute), true))
+                              if (p.IsDefined(typeof(FastPropertyAttribute), true) && !p.GetCustomAttribute<FastPropertyAttribute>().IsIgnore)
                               {
                                   return true;
                               }

@@ -7,7 +7,6 @@
         private int _size;
         private bool _isIgnore = false;
         private int _argSize = 1;
-        private Type _handlerType;
         private int _lengthPlaceSize = 1;
         private Type _typeHandler;
 
@@ -70,15 +69,6 @@
         }
 
         /// <summary>
-        /// 自定义处理器
-        /// </summary>
-        public Type HandlerType
-        {
-            get { return _handlerType; }
-            set { _handlerType = value; }
-        }
-
-        /// <summary>
         /// 不定长字段长度占位字节数
         /// </summary>
         public int LengthPlaceSize
@@ -94,6 +84,9 @@
             }
         }
 
+        /// <summary>
+        /// 自定义处理器
+        /// </summary>
         public Type TypeHandler
         {
             get { return _typeHandler; }

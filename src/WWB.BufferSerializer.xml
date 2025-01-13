@@ -27,14 +27,14 @@
             忽略字段
             </summary>
         </member>
-        <member name="P:WWB.BufferSerializer.Attributes.FastPropertyAttribute.HandlerType">
-            <summary>
-            自定义处理器
-            </summary>
-        </member>
         <member name="P:WWB.BufferSerializer.Attributes.FastPropertyAttribute.LengthPlaceSize">
             <summary>
             不定长字段长度占位字节数
+            </summary>
+        </member>
+        <member name="P:WWB.BufferSerializer.Attributes.FastPropertyAttribute.TypeHandler">
+            <summary>
+            自定义处理器
             </summary>
         </member>
         <member name="M:WWB.BufferSerializer.Helpers.DateTimeToUnixTime(System.DateTime)">

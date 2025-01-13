@@ -1,6 +1,6 @@
 # wwb-bufferserializer
 
-### ²Î¿¼³ÌÐò
+### demo
 ```
 var obj = new TestClass1
 {

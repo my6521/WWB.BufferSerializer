@@ -1,0 +1,42 @@
+name: .NET
+
+on:
+  push:
+    tags:
+    - 'v*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+  
+    - name: 建立.netcore环境
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 8.0.204
+    - name: 安装依赖
+      run: dotnet restore
+
+    - name: 构建6.0
+      run: dotnet build ./src/WWB.BufferSeralizer.csproj -c Release --no-restore -f net6.0
+   
+
+    - name: 打包
+      run: dotnet pack
+
+    - name: 添加github仓库
+      run: |
+        nuget sources add -name github -Source https://nuget.pkg.github.com/my6521/index.json -Username my6521 -Password ${{ secrets.GITHUBTOKEN }}
+
+    - name: 安装nuget 
+      uses: nuget/setup-nuget@v1
+      with:        
+        nuget-version: '5.x'
+
+    - name: 发布生成包到github和nuget
+      run: |
+        nuget push ./src/WWB.BufferSeralizer/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }}
+        nuget push ./src/WWB.BufferSeralizer/bin/Release/*.nupkg -Source github -SkipDuplicate

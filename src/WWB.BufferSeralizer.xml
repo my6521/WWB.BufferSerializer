@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WWB.BufferSeralizer</name>
+    </assembly>
+    <members>
+        <member name="M:WWB.BufferSeralizer.Attributes.FastPropertyAttribute.#ctor(System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="order">排序</param>
+        </member>
+        <member name="P:WWB.BufferSeralizer.Attributes.FastPropertyAttribute.Order">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:WWB.BufferSeralizer.Attributes.FastPropertyAttribute.Size">
+            <summary>
+            字段占用的字节长度
+            支持Int32、String、List、自定义TypeHandler；
+            如果为0并且也不是自动转换类型，则该字段包的首字节认为是长度，
+            </summary>
+        </member>
+        <member name="P:WWB.BufferSeralizer.Attributes.FastPropertyAttribute.IsIgnore">
+            <summary>
+            忽略字段
+            </summary>
+        </member>
+        <member name="P:WWB.BufferSeralizer.Attributes.FastPropertyAttribute.HandlerType">
+            <summary>
+            自定义处理器
+            </summary>
+        </member>
+        <member name="P:WWB.BufferSeralizer.Attributes.FastPropertyAttribute.LengthPlaceSize">
+            <summary>
+            不定长字段长度占位字节数
+            </summary>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.DateTimeToUnixTime(System.DateTime)">
+            <summary>
+            日期转换为UnixTime
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.UnixTimeToDateTime(System.UInt32)">
+            <summary>
+            UnixTime转换为日期转换
+            </summary>
+            <param name="unixTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.CP56Time2aToDateTime(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            CP56Time2a格式转日期格式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.DateTimeToCP56Time2aHexString(System.DateTime)">
+            <summary>
+            日期格式转换为CP56Time2a
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.ToASCIIString(System.Byte[])">
+            <summary>
+            字节转ASCII
+            </summary>
+            <param name="buff"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.ToASCIIString(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            字节转ASCII
+            </summary>
+            <param name="buff"></param>
+            <param name="start"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.GetASCIIBytes(System.String)">
+            <summary>
+            ASCII转字节
+            </summary>
+            <param name="ascii"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.HexToBytes(System.String)">
+            <summary>
+            Hex字符串转字节
+            </summary>
+            <param name="hex"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

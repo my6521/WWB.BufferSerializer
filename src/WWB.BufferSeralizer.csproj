@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>disable</Nullable>
+	  <PackageId>WWB.BufferSerializer</PackageId>
+	  <Version>1.0.0</Version>
+	  <Authors>Wwb</Authors>
+	  <Description>NET基础框架</Description>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <RepositoryUrl>https://github.com/my6521/WWB.BufferSerializer</RepositoryUrl>
+	  <PackageProjectUrl>https://github.com/my6521/WWB.BufferSerializer</PackageProjectUrl>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
+	  <DocumentationFile>$(MSBuildProjectName).xml</DocumentationFile>
+  </PropertyGroup>
+	<ItemGroup>
+		<None Remove="$(MSBuildProjectName).xml" />
+	</ItemGroup>
+</Project>

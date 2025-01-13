@@ -99,7 +99,7 @@ namespace WWB.BufferSeralizer
         }
 
         /// <summary>
-        /// 字节转ASCII
+        /// 字节转ASCII字符串
         /// </summary>
         /// <param name="buff"></param>
         /// <returns></returns>
@@ -109,7 +109,7 @@ namespace WWB.BufferSeralizer
         }
 
         /// <summary>
-        /// 字节转ASCII
+        /// 字节转ASCII字符串
         /// </summary>
         /// <param name="buff"></param>
         /// <param name="start"></param>
@@ -121,13 +121,35 @@ namespace WWB.BufferSeralizer
         }
 
         /// <summary>
-        /// ASCII转字节
+        /// ASCII字符串转字节
         /// </summary>
         /// <param name="ascii"></param>
         /// <returns></returns>
         public static byte[] GetASCIIBytes(string ascii)
         {
             return Encoding.ASCII.GetBytes(ascii);
+        }
+
+        /// <summary>
+        /// 字节转hex字符串
+        /// </summary>
+        /// <param name="buff"></param>
+        /// <returns></returns>
+        public static string ToHexString(byte[] buff)
+        {
+            return BitConverter.ToString(buff).Replace("-", "");
+        }
+
+        /// <summary>
+        /// 字节转hex字符串
+        /// </summary>
+        /// <param name="buff"></param>
+        /// <param name="start"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        public static string ToHexString(byte[] buff, int start, int len)
+        {
+            return BitConverter.ToString(buff, start, len).Replace("-", "");
         }
 
         /// <summary>
@@ -149,6 +171,11 @@ namespace WWB.BufferSeralizer
             return array;
         }
 
+        /// <summary>
+        /// 判断是否是hex字符串
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static bool IsHexString(string input)
         {
             // 使用正则表达式来判断是否为十六进制字符串

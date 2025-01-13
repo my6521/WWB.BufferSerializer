@@ -7,7 +7,7 @@ namespace WWB.BufferSeralizer.Converters
         public override string Read(ByteBlock byteBlock, int size)
         {
             var val = byteBlock.ReadBytes(size);
-            return BitConverter.ToString(val).Replace("-", "");
+            return Helpers.ToHexString(val);
         }
 
         public override void Write(string value, ByteBlock byteBlock, int size)

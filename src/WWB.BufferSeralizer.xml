@@ -66,14 +66,14 @@
         </member>
         <member name="M:WWB.BufferSeralizer.Helpers.ToASCIIString(System.Byte[])">
             <summary>
-            字节转ASCII
+            字节转ASCII字符串
             </summary>
             <param name="buff"></param>
             <returns></returns>
         </member>
         <member name="M:WWB.BufferSeralizer.Helpers.ToASCIIString(System.Byte[],System.Int32,System.Int32)">
             <summary>
-            字节转ASCII
+            字节转ASCII字符串
             </summary>
             <param name="buff"></param>
             <param name="start"></param>
@@ -82,9 +82,25 @@
         </member>
         <member name="M:WWB.BufferSeralizer.Helpers.GetASCIIBytes(System.String)">
             <summary>
-            ASCII转字节
+            ASCII字符串转字节
             </summary>
             <param name="ascii"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.ToHexString(System.Byte[])">
+            <summary>
+            字节转hex字符串
+            </summary>
+            <param name="buff"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.ToHexString(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            字节转hex字符串
+            </summary>
+            <param name="buff"></param>
+            <param name="start"></param>
+            <param name="len"></param>
             <returns></returns>
         </member>
         <member name="M:WWB.BufferSeralizer.Helpers.HexToBytes(System.String)">
@@ -92,6 +108,13 @@
             Hex字符串转字节
             </summary>
             <param name="hex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WWB.BufferSeralizer.Helpers.IsHexString(System.String)">
+            <summary>
+            判断是否是hex字符串
+            </summary>
+            <param name="input"></param>
             <returns></returns>
         </member>
     </members>

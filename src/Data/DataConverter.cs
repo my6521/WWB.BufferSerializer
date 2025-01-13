@@ -70,6 +70,13 @@ namespace WWB.BufferSeralizer.Data
             return ret;
         }
 
+        public byte[] GetBytes(int value, int len)
+        {
+            byte[] ret = new byte[len];
+            PutBytes(ret, 0, value, len);
+            return ret;
+        }
+
         public byte[] GetBytes(long value)
         {
             byte[] ret = new byte[8];

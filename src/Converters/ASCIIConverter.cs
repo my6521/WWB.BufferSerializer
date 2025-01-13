@@ -10,21 +10,22 @@ namespace WWB.BufferSerializer.Converters
             {
                 size = byteBlock.ReadInt32(lengthPlaceSize);
             }
-            if (size == 0)
+            if (size > 0)
             {
-                throw new ArgumentException("size需大于0");
+                var val = byteBlock.ReadBytes(size);
+                return Helpers.ToASCIIString(val);
             }
-            var val = byteBlock.ReadBytes(size);
-            return Helpers.ToASCIIString(val);
+
+            return null;
         }
 
         public override void Write(string value, ByteBlock byteBlock, int size, int lengthPlaceSize)
         {
-            var values = Helpers.GetASCIIBytes(value);
             if (size == 0)
             {
                 byteBlock.WriteInt32(value.Length, lengthPlaceSize);
             }
+            var values = Helpers.GetASCIIBytes(value);
             byteBlock.WriteBytes(values);
         }
     }

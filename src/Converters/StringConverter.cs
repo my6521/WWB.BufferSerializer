@@ -10,12 +10,13 @@ namespace WWB.BufferSerializer.Converters
             {
                 size = byteBlock.ReadInt32(lengthPlaceSize);
             }
-            if (size == 0)
+            if (size > 0)
             {
-                throw new ArgumentException("size需大于0");
+                var val = byteBlock.ReadBytes(size);
+                return Helpers.ToHexString(val);
             }
-            var val = byteBlock.ReadBytes(size);
-            return Helpers.ToHexString(val);
+
+            return null;
         }
 
         public override void Write(string value, ByteBlock byteBlock, int size, int lengthPlaceSize)

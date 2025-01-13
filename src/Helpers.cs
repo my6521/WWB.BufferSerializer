@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace WWB.BufferSeralizer
+namespace WWB.BufferSerializer
 {
     public static class Helpers
     {

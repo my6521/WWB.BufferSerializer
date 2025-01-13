@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace WWB.BufferSeralizer.Relection
+namespace WWB.BufferSerializer.Relection
 {
     internal static class SerializerContext
     {

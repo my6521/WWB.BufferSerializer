@@ -1,4 +1,4 @@
-﻿namespace WWB.BufferSeralizer.Internal
+﻿namespace WWB.BufferSerializer.Internal
 {
     public enum FastTypeCode
     {

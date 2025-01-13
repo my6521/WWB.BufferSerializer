@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
-using WWB.BufferSeralizer.Attributes;
-using WWB.BufferSeralizer.Internal;
+using WWB.BufferSerializer.Attributes;
+using WWB.BufferSerializer.Internal;
 
-namespace WWB.BufferSeralizer.Relection
+namespace WWB.BufferSerializer.Relection
 {
     public class SerializerObject
     {

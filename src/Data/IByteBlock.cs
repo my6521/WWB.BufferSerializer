@@ -1,4 +1,4 @@
-﻿namespace WWB.BufferSeralizer.Data
+﻿namespace WWB.BufferSerializer.Data
 {
     public interface IByteBlock
     {

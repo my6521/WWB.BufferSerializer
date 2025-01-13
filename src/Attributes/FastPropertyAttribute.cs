@@ -1,4 +1,4 @@
-﻿namespace WWB.BufferSeralizer.Attributes
+﻿namespace WWB.BufferSerializer.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
     public class FastPropertyAttribute : Attribute

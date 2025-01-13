@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace WWB.BufferSeralizer.Relection
+namespace WWB.BufferSerializer.Relection
 {
     public static class ReflectionExtensions
     {

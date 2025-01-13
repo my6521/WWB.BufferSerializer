@@ -1,6 +1,6 @@
-﻿using WWB.BufferSeralizer.Data;
+﻿using WWB.BufferSerializer.Data;
 
-namespace WWB.BufferSeralizer.Converters
+namespace WWB.BufferSerializer.Converters
 {
     public class UInt64Converter : Converter<ulong>
     {

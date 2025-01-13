@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Reflection;
-using WWB.BufferSeralizer.Attributes;
-using WWB.BufferSeralizer.Converters;
-using WWB.BufferSeralizer.Data;
-using WWB.BufferSeralizer.Internal;
-using WWB.BufferSeralizer.Relection;
+using WWB.BufferSerializer.Attributes;
+using WWB.BufferSerializer.Converters;
+using WWB.BufferSerializer.Data;
+using WWB.BufferSerializer.Internal;
+using WWB.BufferSerializer.Relection;
 
-namespace WWB.BufferSeralizer
+namespace WWB.BufferSerializer
 {
     public class FastSerializer
     {

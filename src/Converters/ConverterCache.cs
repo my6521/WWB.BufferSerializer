@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace WWB.BufferSeralizer.Converters
+namespace WWB.BufferSerializer.Converters
 {
     public static class ConverterCache
     {

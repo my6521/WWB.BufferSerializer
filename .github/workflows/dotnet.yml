@@ -21,7 +21,7 @@ jobs:
       run: dotnet restore
 
     - name: 构建6.0
-      run: dotnet build ./src/WWB.BufferSeralizer.csproj -c Release --no-restore -f net6.0
+      run: dotnet build ./src/WWB.BufferSerializer.csproj -c Release --no-restore -f net6.0
    
 
     - name: 打包

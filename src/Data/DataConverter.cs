@@ -1,6 +1,6 @@
 ﻿using System.Buffers.Binary;
 
-namespace WWB.BufferSeralizer.Data
+namespace WWB.BufferSerializer.Data
 {
     public enum EndianType
     {

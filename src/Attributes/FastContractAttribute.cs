@@ -1,6 +1,6 @@
-﻿using WWB.BufferSeralizer.Data;
+﻿using WWB.BufferSerializer.Data;
 
-namespace WWB.BufferSeralizer.Attributes
+namespace WWB.BufferSerializer.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class FastContractAttribute : Attribute

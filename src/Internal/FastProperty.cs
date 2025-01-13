@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
-using WWB.BufferSeralizer.Attributes;
-using WWB.BufferSeralizer.Relection;
+using WWB.BufferSerializer.Attributes;
+using WWB.BufferSerializer.Relection;
 
-namespace WWB.BufferSeralizer.Internal
+namespace WWB.BufferSerializer.Internal
 {
     public class FastProperty
     {

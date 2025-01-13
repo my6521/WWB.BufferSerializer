@@ -38,5 +38,5 @@ jobs:
 
     - name: 发布生成包到github和nuget
       run: |
-        nuget push ./src/WWB.BufferSeralizer/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }}
-        nuget push ./src/WWB.BufferSeralizer/bin/Release/*.nupkg -Source github -SkipDuplicate
+        nuget push ./src/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }}
+        nuget push ./src/bin/Release/*.nupkg -Source github -SkipDuplicate

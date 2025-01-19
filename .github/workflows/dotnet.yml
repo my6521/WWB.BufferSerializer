@@ -27,9 +27,6 @@ jobs:
     - name: 打包
       run: dotnet pack
 
-    - name: 添加github仓库
-      run: |
-        nuget sources add -name github -Source https://nuget.pkg.github.com/my6521/index.json -Username my6521 -Password ${{ secrets.GITHUBTOKEN }}
 
     - name: 安装nuget 
       uses: nuget/setup-nuget@v1
@@ -39,4 +36,3 @@ jobs:
     - name: 发布生成包到github和nuget
       run: |
         nuget push ./src/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }}
-        nuget push ./src/bin/Release/*.nupkg -Source github -SkipDuplicate

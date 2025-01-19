@@ -160,6 +160,18 @@
             return value;
         }
 
+        public long ReadInt64(int len)
+        {
+            var size = len;
+            if (this.CanReadLength < size)
+            {
+                throw new ArgumentException();
+            }
+            var value = DataConverter.GetDataConverter(_endianType).ToInt64(this._data, this._position, len);
+            this._position += size;
+            return value;
+        }
+
         public ulong ReadUInt64()
         {
             var size = 8;
@@ -261,6 +273,13 @@
         {
             DataConverter.GetDataConverter(_endianType).PutBytes(this._data, this._position, value);
             this._position += 8;
+            this._length = this._position > this._length ? this._position : this._length;
+        }
+
+        public void WriteInt64(long value, int len)
+        {
+            DataConverter.GetDataConverter(_endianType).PutBytes(this._data, this._position, value, len);
+            this._position += len;
             this._length = this._position > this._length ? this._position : this._length;
         }
 

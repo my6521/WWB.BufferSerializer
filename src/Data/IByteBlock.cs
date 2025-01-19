@@ -33,6 +33,8 @@
 
         long ReadInt64();
 
+        long ReadInt64(int len);
+
         ulong ReadUInt64();
 
         float ReadFloat();
@@ -56,6 +58,8 @@
         void WriteUInt32(uint value);
 
         void WriteInt64(long value);
+
+        void WriteInt64(long value, int len);
 
         void WriteUInt64(ulong value);
 

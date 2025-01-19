@@ -35,6 +35,8 @@ namespace WWB.BufferSerializer.Data
 
         public abstract int ToInt32(ReadOnlySpan<byte> data, int index, int len);
 
+        public abstract long ToInt64(ReadOnlySpan<byte> data, int index, int len);
+
         public byte[] GetBytes(decimal value)
         {
             byte[] ret = new byte[16];
@@ -84,6 +86,13 @@ namespace WWB.BufferSerializer.Data
             return ret;
         }
 
+        public byte[] GetBytes(long value, int len)
+        {
+            byte[] ret = new byte[len];
+            PutBytes(ret, 0, value, len);
+            return ret;
+        }
+
         public byte[] GetBytes(ushort value)
         {
             byte[] ret = new byte[2];
@@ -124,6 +133,8 @@ namespace WWB.BufferSerializer.Data
         public abstract void PutBytes(Span<byte> dest, int destIdx, ulong value);
 
         public abstract void PutBytes(Span<byte> dest, int destIdx, int value, int len);
+
+        public abstract void PutBytes(Span<byte> dest, int destIdx, long value, int len);
 
         public static DataConverter LittleEndian
         {
@@ -307,6 +318,25 @@ namespace WWB.BufferSerializer.Data
                 return res;
             }
 
+            public override long ToInt64(ReadOnlySpan<byte> data, int index, int len)
+            {
+                if (data == null)
+                    throw new ArgumentNullException("data");
+                if (data.Length - index < len)
+                    throw new ArgumentException("index");
+                if (index < 0)
+                    throw new ArgumentException("index");
+
+                long res = 0;
+                const int bit = 8;
+                for (var i = 0; i < len; i++)
+                {
+                    var offset = i * bit;
+                    res |= (data[index + i] & byte.MaxValue) << offset;
+                }
+                return res;
+            }
+
             public override void PutBytes(Span<byte> dest, int destIdx, double value)
             {
                 Check(dest, destIdx, 8);
@@ -367,6 +397,15 @@ namespace WWB.BufferSerializer.Data
             }
 
             public override void PutBytes(Span<byte> dest, int destIdx, int value, int len)
+            {
+                Check(dest, destIdx, len);
+                for (var i = 0; i < len; ++i)
+                {
+                    dest[destIdx + i] = (byte)(value >> i * 8 & byte.MaxValue);
+                }
+            }
+
+            public override void PutBytes(Span<byte> dest, int destIdx, long value, int len)
             {
                 Check(dest, destIdx, len);
                 for (var i = 0; i < len; ++i)
@@ -509,6 +548,25 @@ namespace WWB.BufferSerializer.Data
                 return res;
             }
 
+            public override long ToInt64(ReadOnlySpan<byte> data, int index, int len)
+            {
+                if (data == null)
+                    throw new ArgumentNullException("data");
+                if (data.Length - index < len)
+                    throw new ArgumentException("index");
+                if (index < 0)
+                    throw new ArgumentException("index");
+
+                long res = 0;
+                const int bit = 8;
+                for (var i = 0; i < len; i++)
+                {
+                    var offset = (len - i - 1) * bit;
+                    res |= (data[index + i] & byte.MaxValue) << offset;
+                }
+                return res;
+            }
+
             public override void PutBytes(Span<byte> dest, int destIdx, double value)
             {
                 Check(dest, destIdx, 8);
@@ -569,6 +627,16 @@ namespace WWB.BufferSerializer.Data
             }
 
             public override void PutBytes(Span<byte> dest, int destIdx, int value, int len)
+            {
+                Check(dest, destIdx, len);
+                int endIdx = destIdx + len - 1;
+                for (var i = 0; i < len; ++i)
+                {
+                    dest[endIdx - i] = (byte)(value >> i * 8 & byte.MaxValue);
+                }
+            }
+
+            public override void PutBytes(Span<byte> dest, int destIdx, long value, int len)
             {
                 Check(dest, destIdx, len);
                 int endIdx = destIdx + len - 1;

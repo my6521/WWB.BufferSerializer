@@ -30,4 +30,4 @@ jobs:
 
     - name: 发布生成包到github和nuget
       run: |
-        dotnet nuget push ./src/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }}
+        dotnet nuget push ./src/bin/Release/*.nupkg -s https://api.nuget.org/v3/index.json --skip-duplicate -k ${{ secrets.NUGETKEY }}

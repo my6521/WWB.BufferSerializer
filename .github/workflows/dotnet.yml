@@ -28,11 +28,6 @@ jobs:
       run: dotnet pack
 
 
-    - name: 安装nuget 
-      uses: nuget/setup-nuget@v2
-      with:        
-        nuget-version: '5.x'
-
     - name: 发布生成包到github和nuget
       run: |
-        nuget push ./src/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }}
+        dotnet nuget push ./src/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }}
